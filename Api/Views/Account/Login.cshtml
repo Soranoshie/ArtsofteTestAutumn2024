@@ -1,0 +1,26 @@
+﻿@model Logic.DAL.Models.LoginRequest
+
+<h2>Авторизация</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Phone">Номер телефона</label>
+        <input type="text" class="form-control" id="Phone" name="Phone" value="@Model.Phone" />
+        
+        @if (ViewData.ModelState["Phone"]?.Errors.Count > 0)
+        {
+            <div class="text-danger">
+                @ViewData.ModelState["Phone"].Errors[0].ErrorMessage
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <label for="Password">Пароль</label>
+        <input type="password" class="form-control" id="Password" name="Password" value="@Model.Password" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Войти</button>
+</form>
+
+<p>Нет аккаунта? <a href="/account/register">Зарегистрироваться</a></p>

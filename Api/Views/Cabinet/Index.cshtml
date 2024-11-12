@@ -1,0 +1,19 @@
+﻿@model Logic.DAL.Entities.UserEntity
+
+@{
+    ViewData["Title"] = "Кабинет пользователя";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h3>Информация о пользователе</h3>
+    <p><strong>ФИО:</strong> @Model.FIO</p>
+    <p><strong>Телефон:</strong> @Model.Phone</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Дата последней авторизации:</strong> @Model.LastLogin</p>
+</div>
+
+<form method="post" action="/cabinet/logout">
+    <button type="submit" class="btn btn-danger">Выход</button>
+</form>

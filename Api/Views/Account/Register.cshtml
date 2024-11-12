@@ -1,0 +1,30 @@
+﻿@model Logic.DAL.Models.RegisterRequest
+
+<form asp-action="Register" method="post">
+    <div>
+        <label for="FIO">ФИО</label>
+        <input asp-for="FIO" />
+        @Html.ValidationMessageFor(m => m.FIO)
+    </div>
+    <div>
+        <label for="Phone">Телефон</label>
+        <input asp-for="Phone" />
+        @Html.ValidationMessageFor(m => m.Phone)
+    </div>
+    <div>
+        <label for="Email">Email</label>
+        <input asp-for="Email" />
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div>
+        <label for="Password">Пароль</label>
+        <input asp-for="Password" type="password" />
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <div>
+        <label for="PasswordConfirm">Подтверждение пароля</label>
+        <input asp-for="PasswordConfirm" type="password" />
+        @Html.ValidationMessageFor(m => m.PasswordConfirm)
+    </div>
+    <button type="submit">Зарегистрироваться</button>
+</form>
