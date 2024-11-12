@@ -3,7 +3,7 @@ using Logic.Modules.UserModule;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Properties.Controllers;
+namespace Api.Controllers;
 
 [Route("api/account")]
 [ApiController]

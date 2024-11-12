@@ -1,30 +1,42 @@
 ﻿@model Logic.DAL.Models.RegisterRequest
 
-<form asp-action="Register" method="post">
-    <div>
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post" asp-action="Register">
+    <div class="form-group">
         <label for="FIO">ФИО</label>
-        <input asp-for="FIO" />
-        @Html.ValidationMessageFor(m => m.FIO)
+        <input type="text" class="form-control" id="FIO" name="FIO" asp-for="FIO" />
+        <span asp-validation-for="FIO" class="text-danger"></span>
     </div>
-    <div>
-        <label for="Phone">Телефон</label>
-        <input asp-for="Phone" />
-        @Html.ValidationMessageFor(m => m.Phone)
+
+    <div class="form-group">
+        <label for="Phone">Номер телефона</label>
+        <input type="text" class="form-control" id="Phone" name="Phone" asp-for="Phone" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
     </div>
-    <div>
+
+    <div class="form-group">
         <label for="Email">Email</label>
-        <input asp-for="Email" />
-        @Html.ValidationMessageFor(m => m.Email)
+        <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
-    <div>
+
+    <div class="form-group">
         <label for="Password">Пароль</label>
-        <input asp-for="Password" type="password" />
-        @Html.ValidationMessageFor(m => m.Password)
+        <input type="password" class="form-control" id="Password" name="Password" asp-for="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <div>
+
+    <div class="form-group">
         <label for="PasswordConfirm">Подтверждение пароля</label>
-        <input asp-for="PasswordConfirm" type="password" />
-        @Html.ValidationMessageFor(m => m.PasswordConfirm)
+        <input type="password" class="form-control" id="PasswordConfirm" name="PasswordConfirm" asp-for="PasswordConfirm" />
+        <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
     </div>
-    <button type="submit">Зарегистрироваться</button>
+
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
 </form>
+

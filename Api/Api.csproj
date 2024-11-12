@@ -5,11 +5,13 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
+    
 
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="13.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.10" />
@@ -26,6 +28,14 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Logic\Logic.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="Views\Account\Cabinet.cshtml" />
+      <None Include="Views\Account\Login.cshtml" />
+      <None Include="Views\Account\Register.cshtml" />
+      <None Include="Views\Account\RegistrationSuccess.cshtml" />
+      <None Include="Views\Cabinet\Index.cshtml" />
     </ItemGroup>
 
 </Project>

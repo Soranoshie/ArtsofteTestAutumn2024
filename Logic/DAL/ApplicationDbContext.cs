@@ -12,13 +12,22 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, Config config) : base(options)
     {
         this.config = config;
+        
+        if (!Database.CanConnect())
+            Database.EnsureCreated();
+        
+        if (Database.GetPendingMigrations().Any())
+        {
+            Database.EnsureDeleted();
+            Database.Migrate();
+        }
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         optionsBuilder
-            .UseLazyLoadingProxies()
+            //.UseLazyLoadingProxies()
             .UseNpgsql(config.DatabaseConnectionString,
                 builder => { builder.
                     EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null); });
@@ -27,7 +36,6 @@ public class ApplicationDbContext : DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // прописать id но сначала затестить уникальность выданного ID вручную
         modelBuilder.Entity<UserEntity>()
             .HasIndex(u => u.Phone)
             .IsUnique();

@@ -11,6 +11,12 @@ public class AuthModule : IModule
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+
+                options.Events.OnSignedIn = async context => { context.HttpContext.Response.Redirect("/cabinet"); };
+
                 options.Events.OnRedirectToLogin = (context) =>
                 {
                     context.Response.StatusCode = StatusCodes.Status401Unauthorized;
@@ -23,6 +29,7 @@ public class AuthModule : IModule
                     return Task.CompletedTask;
                 };
             });
+
         services.AddAuthorization();
         return services;
     }

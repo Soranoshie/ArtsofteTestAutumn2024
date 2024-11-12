@@ -8,10 +8,9 @@ public class ApplicationModule : IModule
 {
     public IServiceCollection RegisterModule(IServiceCollection services)
     {
-        services.AddControllers().AddNewtonsoftJson(options =>
+        services.AddControllersWithViews().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         services.AddDbContext<ApplicationDbContext>();
-        // services.AddAutoMapper(typeof(Program).Assembly);
 
         return services;
     }

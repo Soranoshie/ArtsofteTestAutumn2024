@@ -14,4 +14,5 @@ public interface IUserService
     Task<ActionResult<UserEntity>> GetUser(HttpContext httpContext);
     Task<ActionResult<UserEntity>> CreateOrUpdateUser(UserEntity userEntity);
     Task<ActionResult> DeleteUser(string Email);
+    Task<UserEntity> GetUserMvc(HttpContext httpContext);
 }

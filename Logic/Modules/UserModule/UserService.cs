@@ -115,6 +115,7 @@ public class UserService : ControllerBase, IUserService
         }
 
         var user = await userRepository.FindByEmailAsync(email);
+        Console.WriteLine($"User: {user?.FIO}, {user?.Phone}");
         if (user == null)
         {
             var errorResponse = new ErrorResponse
@@ -127,6 +128,19 @@ public class UserService : ControllerBase, IUserService
         }
 
         return Ok(user);
+    }
+
+    public async Task<UserEntity> GetUserMvc(HttpContext httpContext)
+    {
+        var email = httpContext.User.Identity?.Name;
+        if (string.IsNullOrEmpty(email))
+            throw new UnauthorizedAccessException("Пользователь не авторизован");
+
+        var user = await userRepository.FindByEmailAsync(email);
+        if (user == null)
+            throw new KeyNotFoundException("Пользователь не найден");
+
+        return user;
     }
 
     public Task<ActionResult<IEnumerable<UserEntity>>> GetUsers()
