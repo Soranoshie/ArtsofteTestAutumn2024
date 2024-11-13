@@ -21,7 +21,6 @@ public class AccountController : Controller
     [HttpGet("login")]
     public IActionResult Login()
     {
-        Console.WriteLine("Ты долбоёб 6");
         return View();
     }
     
